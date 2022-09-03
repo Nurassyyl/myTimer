@@ -1,0 +1,1 @@
+(()=>{var r={65:r=>{r.exports=()=>{console.log("best slider")}},852:r=>{r.exports=()=>{console.log("my menu burger"),console.log("burger burger menu nurassyl")}}},e={};function o(s){var t=e[s];if(void 0!==t)return t.exports;var n=e[s]={exports:{}};return r[s](n,n.exports,o),n.exports}(()=>{"use strict";const r=o(852),e=o(65);r(),console.log("slider"),e()})()})();
