@@ -4,11 +4,13 @@ const modal = () => {
     const closeBtn = modal.querySelector(".popup-close");
     buttons.forEach(btn => {
         btn.addEventListener('click', () => {
-            modal.style.display = "block";
+            modal.style.transform = "translateX(0%)";
+            modal.style.transition = "transform .7s ease";
         })
     })
     closeBtn.addEventListener('click', () => {
-        modal.style.display = "";
+        modal.style.transform = "";
+        modal.style.transition = "transform .7s ease";
     })
 }
 
