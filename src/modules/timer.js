@@ -1,5 +1,4 @@
 const timer = (deadline) => {
-    console.log(deadline);
     const timerHours = document.getElementById("timer-hours");
     const timerMinutes = document.getElementById("timer-minutes");
     const timerSeconds = document.getElementById("timer-seconds");
@@ -29,7 +28,7 @@ const timer = (deadline) => {
 
     const updateClock = () => {
         const getTime = getTimeRemaining();
-        if (getTime.dateStop == getTime.dateNow) {
+        if (getTime.dateStop === getTime.dateNow) {
             timerHours.textContent = "00";
             timerMinutes.textContent = "00";
             timerSeconds.textContent = "00";
