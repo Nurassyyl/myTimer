@@ -772,9 +772,9 @@ footer .web {
     bottom: 0;
     width: 100%;
     height: 100%;
-    z-index: 9;
+    z-index: -1;
+    opacity: 0;
     background-color: rgba(0, 0, 0, .5);
-    transform: translateX(100%);
 }
 
 .popup .main-form input {
