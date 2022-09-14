@@ -4,7 +4,7 @@ const f = () => {
         .then(response => response.json())
     }
 
-    const sendData = (url) => {
+    const sendData = ({url, method = "GET"}) => {
         return fetch(url, {
             method: "POST",
             body: JSON.stringify(user),
@@ -13,12 +13,6 @@ const f = () => {
             },
         })
             .then(response => response.json())
-            .then(data => {
-                console.log(data);
-            })
-            .catch(error => {
-                console.log(error);
-            })
     }
     
     let user = {};
@@ -27,10 +21,19 @@ const f = () => {
         .then(data => {
             user = data
             console.log(user);
-            sendData("https://jsonplaceholder.typicode.com/posts")
-                .then(data => {
-                    console.log(data);
-                })
+            sendData({
+                url: "https://jsonplaceholder.typicode.com/posts",
+                method: "POST"
+            })
+            .then(data => {
+                console.log(data);
+            })
+            .catch(error => {
+                console.log(error);
+            })
+        })
+        .catch(error => {
+            console.log(error);
         })
 
 }
