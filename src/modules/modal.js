@@ -22,16 +22,6 @@ const modal = () => {
         modal.style.opacity = 0;
         modal.style.zIndex = "";
     })
-
-    animate({
-        duration: 1000,
-        timing(timeFraction) {
-          return timeFraction;
-        },
-        draw(progress) {
-          console.log(progress);
-        }
-      });
 }
 
 export default modal;
