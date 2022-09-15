@@ -1,5 +1,11 @@
-const sendForm = ({formId, someElem = []}) => {
+const sendForm = ({formId, someElem = [], formModalId}) => {
     const form = document.getElementById(formId);
+    const formModal = document.getElementById(formModalId);
+    console.log(formModal);
+
+    const validate = (lists) => {
+        console.log(lists);
+    }
 
     const sendData = (data) => {
         return fetch('https://jsonplaceholder.typicode.com/posts', {
@@ -14,6 +20,7 @@ const sendForm = ({formId, someElem = []}) => {
     form.addEventListener('submit', (e) => {
         e.preventDefault();
 
+        const formElements = form.querySelectorAll('input')
         const formData = new FormData(form);
         const formBody = {};
 
@@ -30,6 +37,8 @@ const sendForm = ({formId, someElem = []}) => {
                 formBody[elem.id] = element.value;
             }
         })  
+
+        validate(formElements)
 
         sendData(formBody).then(data => {
             console.log(data);
