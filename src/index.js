@@ -8,11 +8,11 @@ import calc from "./modules/calc";
 timer('15 September 2022');
 menu();
 modal();
-f();
-calc();
+calc(100);
+// f();
 sendForm({formId: 'form1', someElem: [
     {
         type: 'block',
         id: 'total'
     }
-], formModalId: 'form3'});
+], formModalId: 'form3', formFooterId: 'form2'});
