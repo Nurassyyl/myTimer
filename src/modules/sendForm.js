@@ -1,6 +1,11 @@
 const sendForm = ({formId, someElem = []}) => {
     const form = document.getElementById(formId);
 
+    const statusBlock = document.createElement('div');
+    const loadText = "Загрузка...";
+    const succesText = "Данные успешно отправлены с вами свяжется наш менеджер...";
+    const errorText = "Ошибка...";
+
     const sendData = (data) => {
         return fetch('https://jsonplaceholder.typicode.com/posts', {
             method: 'POST',
@@ -14,8 +19,12 @@ const sendForm = ({formId, someElem = []}) => {
     form.addEventListener('submit', (e) => {
         e.preventDefault();
 
+        const formElements = form.querySelectorAll('input');
         const formData = new FormData(form);
         const formBody = {};
+
+        statusBlock.classList.add('sk-rotating-plane');
+        form.append(statusBlock);
 
         formData.forEach((val, key) => {
             formBody[key] = val;
@@ -29,11 +38,23 @@ const sendForm = ({formId, someElem = []}) => {
             } else if (elem.type === "input") {
                 formBody[elem.id] = element.value;
             }
-        })  
+        })
 
-        sendData(formBody).then(data => {
-            console.log(data);
-        })  
+        try {
+            sendData(formBody).then(data => {
+                console.log(data);
+                statusBlock.classList.remove('sk-rotating-plane');
+                statusBlock.textContent = succesText;
+                form.append(statusBlock);
+                formElements.forEach(input => {
+                    input.value = '';
+                })
+            })
+        } catch (errorText) {
+                statusBlock.textContent = succesText;
+                form.append(statusBlock);
+        }
+         
     })
 
 }

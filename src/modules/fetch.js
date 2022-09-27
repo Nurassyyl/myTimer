@@ -25,8 +25,7 @@ const f = () => {
 
     getData('db.json')
         .then(data => {
-            user = data
-            console.log(user);
+            user = data;
             sendData("https://jsonplaceholder.typicode.com/posts")
                 .then(data => {
                     console.log(data);

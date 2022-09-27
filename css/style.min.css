@@ -306,6 +306,26 @@ main .main-form-input {
     border: 1px solid #fefefe
 }
 
+.sk-rotating-plane {
+    width: 4em ;
+    height: 4em ;
+    margin: auto;
+    background-color: #337ab7;
+    animation: sk-rotating-plane 1.2s infinite ease-in-out;
+  }
+  
+  @keyframes sk-rotating-plane {
+    0% {
+      transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    }
+    50% {
+      transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    }
+    100% {
+      transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    }
+}
+
 main .main-form-input input {
     -webkit-transform: translateY(-3rem);
     transform: translateY(-3rem)
