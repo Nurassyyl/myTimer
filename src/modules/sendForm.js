@@ -6,6 +6,11 @@ const sendForm = ({formId, someElem = []}) => {
     const succesText = "Данные успешно отправлены с вами свяжется наш менеджер...";
     const errorText = "Ошибка...";
 
+    const validate = (list) => {
+        let succes = true;
+        return succes;
+    }
+
     const sendData = (data) => {
         return fetch('https://jsonplaceholder.typicode.com/posts', {
             method: 'POST',
@@ -16,9 +21,7 @@ const sendForm = ({formId, someElem = []}) => {
         }).then(res => res.json())
     }
 
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-
+    const submitForm = () => {
         const formElements = form.querySelectorAll('input');
         const formData = new FormData(form);
         const formBody = {};
@@ -40,22 +43,36 @@ const sendForm = ({formId, someElem = []}) => {
             }
         })
 
-        try {
-            sendData(formBody).then(data => {
-                console.log(data);
-                statusBlock.classList.remove('sk-rotating-plane');
-                statusBlock.textContent = succesText;
-                form.append(statusBlock);
-                formElements.forEach(input => {
-                    input.value = '';
+        if (validate(formElements)) {
+            sendData(formBody)
+                .then(data => {
+                    statusBlock.classList.remove('sk-rotating-plane');
+                    statusBlock.textContent = succesText;
+
+                    formElements.forEach(input => {
+                        input.value = '';
+                    })
                 })
-            })
-        } catch (errorText) {
-                statusBlock.textContent = succesText;
-                form.append(statusBlock);
+                .catch (error => {
+                    statusBlock.classList.remove('sk-rotating-plane');
+                    statusBlock.textContent = errorText;
+                })
+        } else {
+            alert("Данные не валидны");
         }
-         
-    })
+    }
+
+    try {
+        if(!form) {
+            throw new Error('Верните форму на место, пожаааалуйста!')
+        }
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            submitForm();
+        })
+    } catch (error) {
+        console.log(error.message);
+    }
 
 }
 
