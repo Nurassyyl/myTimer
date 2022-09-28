@@ -10,7 +10,7 @@ menu();
 modal();
 f();
 calc();
-sendForm({formId: 'form123', someElem: [
+sendForm({formId: 'form1', someElem: [
     {
         type: 'block',
         id: 'total'
