@@ -331,6 +331,16 @@ main .main-form-input input {
     transform: translateY(-3rem)
 }
 
+main .error input{
+    background-color: #e08c8c;
+}
+
+main .input-error {
+    display: block;
+    font-size: 12px;
+    color: #eb4d4b;
+}
+
 main .main-form .form-btn {
     display: inline-block;
     text-align: center;
