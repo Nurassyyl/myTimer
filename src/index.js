@@ -4,6 +4,7 @@ import modal from "./modules/modal";
 import f from "./modules/fetch";
 import sendForm from "./modules/sendForm";
 import calc from "./modules/calc";
+import accordion from "./modules/accordion";
 
 timer('15 September 2022');
 menu();
@@ -16,3 +17,4 @@ sendForm({formId: 'form1', someElem: [
         id: 'total'
     }
 ]});
+accordion();

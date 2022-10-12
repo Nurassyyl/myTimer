@@ -13,36 +13,61 @@ const sendForm = ({formId, someElem = []}) => {
     const validate = (list) => {
         let succes = true;
         const formName = list[0];
-        if (!/[а-яА-Я]+/gi.test(formName.value)) {
-            let mainError = '<div class="row">' +
-                                '<div class="col-12 col-lg-4">' +
-                                    '<input type="text" class="form-name" id="form1-name" name="user_name" placeholder="Ваше имя"' +
-                                        'required>' +
-                                '</div>' +
-                                '<div class="col-12 col-lg-4">' +
-                                    '<input type="email" class="form-email" id="form1-email" name="user_email" placeholder="E-mail">' +
-                                    '<p class="input-error">*Поле E-Mail адрес обязательно для заполнения.</p>' +
-                                '</div>' +
-                                '<div class="col-12 col-lg-4">' +
-                                    '<input type="tel" class="form-phone" id="form1-phone" name="user_phone"' +
-                                        'placeholder="Номер телефона" required>' +
-                                '</div>' +
-                            '</div>';
-            let containerError = '<div class="container">' +
-                                    '<div class="row justify-content-center">' +
-                                        '<button class="btn form-btn" type="submit">Оставить заявку!</button>' +
-                                    '</div>' +
-                                '</div>'            
-            mainForm.innerHTML = mainError;
-            mainForm.classList.add('error');
-            container.innerHTML = containerError;
-            container.classList.add('error');
-            form.append(mainForm);
-            form.append(container)
-            succes = false;
-        } else {
-            succes = true;
-        }
+        const formEmail = list[1];
+        const formPhone = list[2];
+        const p = form.querySelectorAll('.input-error');
+        p.forEach(errors => {
+            errors.remove();
+        })
+
+        list.forEach(li => {
+            if(!li.value) {
+                let inputError = document.createElement('p');
+                inputError.classList.add('input-error')
+                inputError.innerHTML = "*Поле имя обязательно для заполнения";
+                console.log(li);
+                li.parentElement.insertBefore(inputError, li);
+                succes = false;
+            }
+        })
+
+        // if(!formName.value && !formEmail.value) {
+        //     let inputError = document.createElement('p');
+        //     inputError.classList.add('input-error')
+        //     inputError.innerHTML = "*Поле имя обязательно для заполнения";
+        //     formName.parentElement.insertBefore(inputError, formName);
+        //     succes = false;
+        // } else if (!/[а-яА-Я]+/gi.test(formName.value)) {
+        //     let inputError = document.createElement('p');
+        //     inputError.classList.add('input-error')
+        //     inputError.innerHTML = "*Только кирилица";
+        //     formName.parentElement.insertBefore(inputError, formName);
+        //     succes = false;
+        // } else {
+        //     succes = true;
+        // }
+
+        // if(!formEmail.value) {
+        //     let inputError = document.createElement('p');
+        //     inputError.classList.add('input-error')
+        //     inputError.innerHTML = "*Поле E-Mail адрес обязательно для заполнения.";
+        //     formEmail.parentElement.insertBefore(inputError, formEmail);
+        //     succes = false;
+        // } else {
+        //     succes = true;
+        // }
+
+        // if(!formPhone.value) {
+        //     let inputError = document.createElement('p');
+        //     inputError.classList.add('input-error')
+        //     inputError.innerHTML = "*Поле телефон обязательно для заполнения.";
+        //     formPhone.parentElement.insertBefore(inputError, formPhone);
+        //     succes = false;
+        // } else {
+        //     succes = true;
+        // }
+
+        
         return succes;
     }
 
