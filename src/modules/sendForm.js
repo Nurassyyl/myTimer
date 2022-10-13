@@ -22,12 +22,31 @@ const sendForm = ({formId, someElem = []}) => {
 
         list.forEach(li => {
             if(!li.value) {
-                let inputError = document.createElement('p');
-                inputError.classList.add('input-error')
-                inputError.innerHTML = "*Поле имя обязательно для заполнения";
-                console.log(li);
-                li.parentElement.insertBefore(inputError, li);
-                succes = false;
+                if (li.classList.contains('form-name')) {
+                    let inputError = document.createElement('p');
+                    inputError.classList.add('input-error')
+                    inputError.innerHTML = "*Поле имя обязательно для заполнения";
+                    console.log(li);
+                    li.parentElement.insertBefore(inputError, li);
+                    li.classList.add('error');
+                    succes = false;    
+                } else if (li.classList.contains('form-email')) {
+                    let inputError = document.createElement('p');
+                    inputError.classList.add('input-error')
+                    inputError.innerHTML = "*Поле E-Mail адрес обязательно для заполнения";
+                    console.log(li);
+                    li.parentElement.insertBefore(inputError, li);
+                    li.classList.add('error');
+                    succes = false;
+                } else {
+                    let inputError = document.createElement('p');
+                    inputError.classList.add('input-error')
+                    inputError.innerHTML = "*Поле телефон обязательно для заполнения";
+                    console.log(li);
+                    li.parentElement.insertBefore(inputError, li);
+                    li.classList.add('error');
+                    succes = false;
+                }
             }
         })
 
