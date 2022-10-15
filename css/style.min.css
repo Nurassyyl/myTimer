@@ -352,7 +352,6 @@ main .input-error {
 main .input-group .error {
     background-color: #d36363;
     color: #ffffff;
-    margin-bottom: 28px;
 }
 
 main .main-form .form-btn {
@@ -1202,6 +1201,12 @@ footer .web {
 
     main header .menu small {
         display: none
+    }
+
+    main .input-group .error {
+        background-color: #d36363;
+        color: #ffffff;
+        margin-bottom: 28px;
     }
 
     .service .form-btn {
