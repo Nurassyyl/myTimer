@@ -342,7 +342,6 @@ main .input-group {
 }
 
 main .input-error {
-    display: block;
     color: red;
     margin-top: -28px;
     font-size: 11px;
@@ -352,7 +351,8 @@ main .input-error {
 
 main .input-group .error {
     background-color: #d36363;
-    color: #ffffff;;
+    color: #ffffff;
+    margin-bottom: 28px;
 }
 
 main .main-form .form-btn {
@@ -692,20 +692,20 @@ main a {
     max-width: 435px
 }
 
-/* .calc input[type=number] {
-    -moz-appearance: textfield
+.calc input[type=number] {
+    -moz-appearance: textfield;
 }
 
 .calc input[type=number]:focus,
 .calc input[type=number]:hover {
     -moz-appearance: number-input
-} */
+}
 
-/* .calc input[type=number]::-webkit-inner-spin-button,
+.calc input[type=number]::-webkit-inner-spin-button,
 .calc input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0
-} */
+}
 
 .connect {
     padding-top: 5rem;
@@ -1157,6 +1157,12 @@ footer .web {
 @media (max-width:448px) {
     body nav {
         width: 100%
+    }
+
+    main .input-error {
+        display: block;
+        margin-top: -28px;
+        font-size: 11px;
     }
 
     body .active-menu {
