@@ -342,6 +342,7 @@ main .input-group {
 }
 
 main .input-error {
+    display: block;
     color: red;
     margin-top: -28px;
     font-size: 11px;
