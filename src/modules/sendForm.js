@@ -1,9 +1,5 @@
 const sendForm = ({formId, someElem = []}) => {
     const form = document.getElementById(formId);
-    const main = document.querySelector('main');
-    const mainForm = document.querySelector('.main-form-input');
-    const row = form.querySelector('.row');
-    const container = form.querySelectorAll('.container')[1];
 
     const statusBlock = document.createElement('div');
     const loadText = "sk-rotating-plane";
@@ -12,13 +8,13 @@ const sendForm = ({formId, someElem = []}) => {
 
     const validate = (list) => {
         let succes = true;
-        const formName = list[0];
-        const formEmail = list[1];
-        const formPhone = list[2];
+
         const p = form.querySelectorAll('.input-error');
         p.forEach(errors => {
             errors.remove();
+            errors.classList.remove('error');
         })
+
 
         list.forEach(li => {
             if(!li.value) {
@@ -47,47 +43,11 @@ const sendForm = ({formId, someElem = []}) => {
                     li.classList.add('error');
                     succes = false;
                 }
+            } else {
+                li.classList.remove('error');
             }
         })
-
-        // if(!formName.value && !formEmail.value) {
-        //     let inputError = document.createElement('p');
-        //     inputError.classList.add('input-error')
-        //     inputError.innerHTML = "*Поле имя обязательно для заполнения";
-        //     formName.parentElement.insertBefore(inputError, formName);
-        //     succes = false;
-        // } else if (!/[а-яА-Я]+/gi.test(formName.value)) {
-        //     let inputError = document.createElement('p');
-        //     inputError.classList.add('input-error')
-        //     inputError.innerHTML = "*Только кирилица";
-        //     formName.parentElement.insertBefore(inputError, formName);
-        //     succes = false;
-        // } else {
-        //     succes = true;
-        // }
-
-        // if(!formEmail.value) {
-        //     let inputError = document.createElement('p');
-        //     inputError.classList.add('input-error')
-        //     inputError.innerHTML = "*Поле E-Mail адрес обязательно для заполнения.";
-        //     formEmail.parentElement.insertBefore(inputError, formEmail);
-        //     succes = false;
-        // } else {
-        //     succes = true;
-        // }
-
-        // if(!formPhone.value) {
-        //     let inputError = document.createElement('p');
-        //     inputError.classList.add('input-error')
-        //     inputError.innerHTML = "*Поле телефон обязательно для заполнения.";
-        //     formPhone.parentElement.insertBefore(inputError, formPhone);
-        //     succes = false;
-        // } else {
-        //     succes = true;
-        // }
-
-        
-        return succes;
+            return succes;
     }
 
     const sendData = (data) => {
@@ -139,6 +99,7 @@ const sendForm = ({formId, someElem = []}) => {
         } else {
             statusBlock.classList.remove(loadText);
         }
+        statusBlock.textContent = '';
     }
 
     try {
