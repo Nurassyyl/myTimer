@@ -47,6 +47,7 @@ const sendForm = ({formId, someElem = []}) => {
                 li.classList.remove('error');
             }
         })
+        // if (/[а-яА-Я]/gi.test())
             return succes;
     }
 
