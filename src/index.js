@@ -6,7 +6,7 @@ import sendForm from "./modules/sendForm";
 import calc from "./modules/calc";
 import accordion from "./modules/accordion";
 
-timer('15 September 2022');
+timer('25 December 2023');
 menu();
 modal();
 f();
